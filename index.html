@@ -50,8 +50,8 @@
         </div>
 
         <div class="song_detail">
-          <p id="song_name">Make Me Move</p>
-          <p id="artist_name">NoCopyrightSounds [NCS]</p>
+          <p id="song_name">جاري التحميل..</p>
+          <p id="artist_name">اذكر الله وصلي علي رسول الله</p>
         </div>
         <i class="fa fa-chevron-up" aria-hidden="true" id="up_player"></i>
       </div>
@@ -1128,6 +1128,12 @@
       function play_song() {
         song[index_no].play();
 
+        song_img.innerHTML = `<img src="${All_song[index_no].img}" />`;
+        playing_img.innerHTML = `<img src="${All_song[index_no].img}" />`;
+
+        song_name.innerHTML = All_song[index_no].name;
+        artist_name.innerHTML = All_song[index_no].singer;
+        
         if (is_song_played == true) {
           document.querySelector(".active_song").pause();
           document.querySelector(".active_song").classList.remove("active_song");
@@ -1141,12 +1147,6 @@
         setInterval(update_second, 1000);
         wave_animation.style.opacity = '1';
         p_m_player.style.transform = 'translateY(0%)';
-
-        song_img.innerHTML = `<img src="${All_song[index_no].img}" />`;
-        playing_img.innerHTML = `<img src="${All_song[index_no].img}" />`;
-
-        song_name.innerHTML = All_song[index_no].name;
-        artist_name.innerHTML = All_song[index_no].singer;
 
         current_track_name.innerHTML = All_song[index_no].name;
         current_singer_name.innerHTML = All_song[index_no].singer;
