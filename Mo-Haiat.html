@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,154 +22,213 @@
             font-family: Arial, sans-serif;
             text-align: center;
         }
+
         .player-container {
             position: fixed;
-            bottom: 50px; /* تعديل المسافة من الأسفل للمشغل */
+            bottom: 50px;
+            /* تعديل المسافة من الأسفل للمشغل */
             left: 0;
             right: 0;
-            background: rgba(0, 0, 0, 0.0); /* خلفية شفافة */
+            background: rgba(0, 0, 0, 0.0);
+            /* خلفية شفافة */
             padding: 20px;
             border-radius: 20px;
         }
+
         .scrolling-text {
             position: absolute;
-            bottom: -50px; /* تعديل المسافة من الأسفل للنص */
+            bottom: -50px;
+            /* تعديل المسافة من الأسفل للنص */
             left: 0;
             right: 0;
             white-space: nowrap;
             animation: scroll 20s linear infinite;
-            font-size: 24px; /* حجم الخط */
-            color: yellow; /* لون النص الأصفر */
+            font-size: 24px;
+            /* حجم الخط */
+            color: yellow;
+            /* لون النص الأصفر */
         }
+
         @keyframes scroll {
             0% {
                 transform: translateX(100%);
             }
+
             100% {
                 transform: translateX(-100%);
             }
         }
+
         .audio-controls {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 10px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.5);
+
+            max-width: 210px;
+            max-height: 50px;
+            border-radius: 25px;
+            margin-bottom: 10px;
         }
+
+        #up {
+            position: relative;
+            bottom: 125px;
+        }
+
+        .audio-controls h3 {
+            color: black;
+            white-space: nowrap;
+        }
+
         .play-pause-btn {
-            font-size: 48px; /* حجم الزر */
-            color: white;
+            font-size: 32px;
+            /* حجم الزر */
+            color: saddlebrown;
             cursor: pointer;
-            margin: 0 10px;
+            margin-right: 10px;
         }
-        audio {
-            display: none; /* إخفاء المشغل الافتراضي */
+
+        #audio,
+        #fatiha {
+            display: none;
+            /* إخفاء المشغل الافتراضي */
         }
     </style>
 </head>
+
 <body>
     <div class="player-container">
-        <h4>إذاعة القرآن الكريم من القاهرة</h4>
-        <h3>اللهم بلغ ثواب ما نسمعه من القرآن إلى </h3>
-        <h3>  روح / أبي و أمي 
+        <div id="up">
+            <!-- <h3>اللهم بلغ ثواب ما نسمعه من القرآن إلى </h3>
+            <h3> روح / أبي و أمي </h3>-->
+
+            <div class="audio-controls">
+                <h3>إذاعة القرآن الكريم </h3>
+                <i class="fas fa-play play-pause-btn" id="playPauseBtn"
+                    onclick="togglePlayPause('audio', 'playPauseBtn')"></i>
+                <audio id="audio" controls>
+                    <source src="https://3vh.liveradiu.com:8000/128kp.mp3" type="audio/mpeg">
+                    متصفحك لا يدعم عنصر الصوت.
+                </audio>
+            </div>
+
+
+            <div class="audio-controls">
+                <h3>سورة الفاتحه ويس</h3>
+                <i class="fas fa-play play-pause-btn" id="playPauseBtn2"
+                    onclick="togglePlayPause('fatiha', 'playPauseBtn2')"></i>
+
+                <audio id="fatiha" preload="auto" controls src="https://server8.mp3quran.net/afs/001.mp3">
+                    متصفحك لا يدعم عنصر الصوت.
+                </audio>
+            </div>
+        </div>
+
         <div class="scrolling-text">
             <p>اللهم اغفر لهما وارزقهما الفردوس الأعلى واجعل قبرهما روضة من رياض الجنة</p>
         </div>
-        <div class="audio-controls">
-            <i class="fas fa-play play-pause-btn" id="playPauseBtn" onclick="togglePlayPause()"></i>
-        </div>
-        <audio id="audio" controls>
-            <source src="https://3vh.liveradiu.com:8000/128kp.mp3" type="audio/mpeg">
-            متصفحك لا يدعم عنصر الصوت.
-        </audio>
     </div>
-<script>
-    let wakeLock = null;
+    <script>
+        let audioo = document.getElementById("fatiha")
 
-    async function requestWakeLock() {
-        try {
-            wakeLock = await navigator.wakeLock.request('screen');
-            wakeLock.addEventListener('release', () => {
-                console.log('Wake Lock was released');
-            });
-            console.log('Wake Lock is active');
-        } catch (err) {
-            console.error(`${err.name}, ${err.message}`);
+        audioo.addEventListener("ended", function () {
+            if (audioo.src == "https://server8.mp3quran.net/afs/001.mp3")
+                audioo.src = "https://server8.mp3quran.net/afs/036.mp3"
+            else audioo.src = "https://server8.mp3quran.net/afs/001.mp3"
+            audioo.load()
+            audioo.play()
+        })
+
+        let wakeLock = null;
+
+        async function requestWakeLock() {
+            try {
+                wakeLock = await navigator.wakeLock.request('screen');
+                wakeLock.addEventListener('release', () => {
+                    console.log('Wake Lock was released');
+                });
+                console.log('Wake Lock is active');
+            } catch (err) {
+                console.error(`${err.name}, ${err.message}`);
+            }
         }
-    }
 
-    function togglePlayPause() {
-        const song = document.getElementById('audio');
-        const playBtn = document.getElementById('playPauseBtn');
+        function togglePlayPause(tag, button) {
+            const song = document.getElementById(tag);
+            const playBtn = document.getElementById(button);
 
-        if (!song || !playBtn) {
-            console.error('Song element or Play button not found.');
-            return;
+            if (!song || !playBtn) {
+                console.error('Song element or Play button not found.');
+                return;
+            }
+
+            if (song.paused) {
+                song.play().then(() => {
+                    playBtn.classList.remove('fa-play');
+                    playBtn.classList.add('fa-pause');
+                    requestWakeLock();
+                }).catch(error => {
+                    console.log('Error playing the song:', error);
+                });
+            } else {
+                song.pause();
+                playBtn.classList.remove('fa-pause');
+                playBtn.classList.add('fa-play');
+                if (wakeLock !== null) {
+                    wakeLock.release().then(() => {
+                        wakeLock = null;
+                    }).catch(error => {
+                        console.error('Error releasing wake lock:', error);
+                    });
+                }
+            }
         }
 
-        if (song.paused) {
-            song.play().then(() => {
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible' && wakeLock !== null) {
+                requestWakeLock();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const song = document.getElementById('audio');
+            const playBtn = document.getElementById('playPauseBtn');
+
+            if (!song || !playBtn) {
+                console.error('Required elements not found.');
+                return;
+            }
+
+            song.addEventListener('play', () => {
                 playBtn.classList.remove('fa-play');
                 playBtn.classList.add('fa-pause');
                 requestWakeLock();
-            }).catch(error => {
-                console.log('Error playing the song:', error);
             });
-        } else {
-            song.pause();
-            playBtn.classList.remove('fa-pause');
-            playBtn.classList.add('fa-play');
-            if (wakeLock !== null) {
-                wakeLock.release().then(() => {
-                    wakeLock = null;
-                }).catch(error => {
-                    console.error('Error releasing wake lock:', error);
-                });
-            }
-        }
-    }
 
-    document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible' && wakeLock !== null) {
-            requestWakeLock();
-        }
-    });
+            song.addEventListener('pause', () => {
+                playBtn.classList.remove('fa-pause');
+                playBtn.classList.add('fa-play');
+                if (wakeLock !== null) {
+                    wakeLock.release().then(() => {
+                        wakeLock = null;
+                    }).catch(error => {
+                        console.error('Error releasing wake lock:', error);
+                    });
+                }
+            });
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const song = document.getElementById('audio');
-        const playBtn = document.getElementById('playPauseBtn');
-
-        if (!song || !playBtn) {
-            console.error('Required elements not found.');
-            return;
-        }
-
-        song.addEventListener('play', () => {
-            playBtn.classList.remove('fa-play');
-            playBtn.classList.add('fa-pause');
-            requestWakeLock();
+            song.addEventListener('timeupdate', function () {
+                let position = song.currentTime / song.duration;
+                const fill = document.querySelector('.fill');
+                if (fill) {
+                    fill.style.width = position * 100 + '%';
+                }
+            });
         });
-
-        song.addEventListener('pause', () => {
-            playBtn.classList.remove('fa-pause');
-            playBtn.classList.add('fa-play');
-            if (wakeLock !== null) {
-                wakeLock.release().then(() => {
-                    wakeLock = null;
-                }).catch(error => {
-                    console.error('Error releasing wake lock:', error);
-                });
-            }
-        });
-
-        song.addEventListener('timeupdate', function() {
-            let position = song.currentTime / song.duration;
-            const fill = document.querySelector('.fill');
-            if (fill) {
-                fill.style.width = position * 100 + '%';
-            }
-        });
-    });
-</script>
+    </script>
 
 </body>
+
 </html>
