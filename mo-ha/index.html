@@ -296,6 +296,13 @@
             document.getElementById(id).play();
         }
 
+
+document.addEventListener("touchstart", () => {
+    try {navigator.wakeLock.request()} catch(e) {}
+}) 
+        
+    try {navigator.wakeLock.request()} catch(e) {}
+        
         // مسبحة إسلامية
         let count = 0;
         function increaseCount() {
