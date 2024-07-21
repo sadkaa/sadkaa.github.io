@@ -306,8 +306,9 @@ document.addEventListener("touchstart", () => {
             const radios = document.querySelectorAll('audio');
             radios.forEach(radio => radio.pause());
             document.getElementById(id).play();
-            
-                navigator.wakeLock.request()
+            try {
+            navigator.wakeLock.request()
+            } catch(e) {}
         }
 
         // مسبحة إسلامية
@@ -323,7 +324,6 @@ document.addEventListener("touchstart", () => {
 
         // الاحتفاظ بتشغيل الصوت في الخلفية
         document.addEventListener('visibilitychange', function() {
-           navigator.wakeLock.request()
             if (document.hidden) {
                 const playingAudio = document.querySelector('audio:playing');
                 if (playingAudio) {
@@ -331,11 +331,13 @@ document.addEventListener("touchstart", () => {
                     playingAudio.play().catch(error => console.log('Error playing audio:', error));
                 }
             }
+           try {
+            navigator.wakeLock.request()
+            } catch(e) {}
         });
 
         // كود يساعد على تشغيل الصوت في خلفية المتصفح في الأندرويد
         document.addEventListener('play', function(e){
-                    navigator.wakeLock.request()
             const audios = document.getElementsByTagName('audio');
             for(let i = 0, len = audios.length; i < len;i++){
                 if(audios[i] != e.target){
