@@ -30,6 +30,9 @@
             cursor: pointer;
             margin: 0.1em 0;
         }
+        .radio-image {
+            max-width: 50%; /* تصغير حجم الصور المرتبطة بالإذاعة إلى النصف */
+        }
         section {
             padding: 0em;
             margin: -0.5em 0;
@@ -98,27 +101,30 @@
             flex-direction: column;
         }
         .counter {
-            font-size: 3em;
+            font-size: 4em;
             margin: 0.5em 0;
-            color: #4CAF50;
+            color: #fff;
+            background-color: #4CAF50;
             border: 2px solid #4CAF50;
             border-radius: 50%;
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
             display: flex;
             justify-content: center;
             align-items: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         .counter-button {
-             padding: 0em 0em;
-            font-size: 1em;
+            padding: 1em 2em;
+            font-size: 1.5em;
             margin: 0.5em;
             cursor: pointer;
             border: none;
-            border-radius: 25px;
+            border-radius: 50px;
             background-color: #4CAF50;
             color: white;
             transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         .counter-button:hover {
             background-color: #45a049;
@@ -159,15 +165,15 @@
 <body>
     <header data-aos="fade-up">
         <img src="https://raw.githubusercontent.com/sadkaa/m/main/images/greenrahma.png" alt="Logo" class="logo">
-<img src="https://raw.githubusercontent.com/sadkaa/sadkaa.github.io/main/mo-ha/IMG-m-h.jpg" >
+        <img src="https://raw.githubusercontent.com/sadkaa/sadkaa.github.io/main/mo-ha/IMG-m-h.jpg" >
     </header>
     <section data-aos="fade-up">
         <h3>اللهم بلغ ثواب ما نسمعه من القرآن إلى<br>
-      روح / الحاج / محمد ابراهيم محمد.<br>
+        روح / الحاج / محمد ابراهيم محمد.<br>
         وروح / الحاجه / حياة محمد موسي.</h3>
     </section>
     <section data-aos="fade-up">
-        <img src="https://sadqajariaa.online/wp-content/uploads/2023/02/317825-removebg-preview.png" alt="إذاعة القرآن الكريم" onclick="playRadio('radio')">
+        <img class="radio-image" src="https://sadqajariaa.online/wp-content/uploads/2023/02/317825-removebg-preview.png" alt="إذاعة القرآن الكريم" onclick="playRadio('radio')">
         <div class="custom-audio-controls">
             <button onclick="document.getElementById('radio').play()">تشغيل</button>
             <button onclick="document.getElementById('radio').pause()">إيقاف</button>
@@ -176,64 +182,54 @@
             <source src="https://stream.radiojar.com/8s5u5tpdtwzuv" type="audio/mpeg">
             مشغل الصوت غير مدعوم في متصفحك.
         </audio>
-
     </section>
     <section data-aos="fade-up">
         <div class="text-overlay">
             <h2>إذاعة الشيخ محمد الطبلاوي</h2>
         </div>
-        <img src="https://raw.githubusercontent.com/sadkaa/m/main/sadaka-img/altablawy.png" alt="إذاعة الشيخ محمد الطبلاوي" onclick="playRadio('tablawy')">
+        <img class="radio-image" src="https://raw.githubusercontent.com/sadkaa/m/main/sadaka-img/altablawy.png" alt="إذاعة الشيخ محمد الطبلاوي" onclick="playRadio('tablawy')">
         <div class="custom-audio-controls">
             <button onclick="document.getElementById('tablawy').play()">تشغيل</button>
-           
-<button onclick="document.getElementById('tablawy').pause()">إيقاف</button>
+            <button onclick="document.getElementById('tablawy').pause()">إيقاف</button>
         </div>
         <audio id="tablawy" controls>
             <source src="https://server03.quran-uni.com:7038/;*.mp3" type="audio/mpeg">
             مشغل الصوت غير مدعوم في متصفحك.
         </audio>
-
     </section>
     <section data-aos="fade-up">
         <div class="text-overlay">
             <h2>إذاعة الشيخ عبدالباسط عبدالصمد</h2>
         </div>
-        <img src="https://raw.githubusercontent.com/sadkaa/m/main/sadaka-img/abdelbaset.png" alt="إذاعة  الشيخ عبد الباسط عبد الصمد" onclick="playRadio('abdelbaset')">
+        <img class="radio-image" src="https://raw.githubusercontent.com/sadkaa/m/main/sadaka-img/abdelbaset.png" alt="إذاعة الشيخ عبد الباسط عبد الصمد" onclick="playRadio('abdelbaset')">
         <div class="custom-audio-controls">
             <button onclick="document.getElementById('abdelbaset').play()">تشغيل</button>
-           
-<button onclick="document.getElementById('abdelbaset').pause()">إيقاف</button>
+            <button onclick="document.getElementById('abdelbaset').pause()">إيقاف</button>
         </div>
         <audio id="abdelbaset" controls>
-            <source src="https://server03.quran-uni.com:7000/;*.mp3"" type="audio/mpeg">
+            <source src="https://server03.quran-uni.com:7000/;*.mp3" type="audio/mpeg">
             مشغل الصوت غير مدعوم في متصفحك.
         </audio>
     </section>
-
-
-
-
-    </section>
     <section data-aos="fade-up">
- <div class="text-overlay">
-            <h2>إذاعة تفسير الإمام الشعراوي
-</h2>
+        <div class="text-overlay">
+            <h2>إذاعة تفسير الإمام الشعراوي</h2>
         </div>
-        <img src="https://raw.githubusercontent.com/sadkaa/m/main/sadaka-img/al-sharawy.png" alt="إذاعة تفسير القرآن للشعراوي" onclick="playRadio('shaarawy')">
+        <img class="radio-image" src="https://raw.githubusercontent.com/sadkaa/m/main/sadaka-img/al-sharawy.png" alt="إذاعة تفسير القرآن للشعراوي" onclick="playRadio('shaarawy')">
         <div class="custom-audio-controls">
             <button onclick="document.getElementById('shaarawy').play()">تشغيل</button>
             <button onclick="document.getElementById('shaarawy').pause()">إيقاف</button>
         </div>
         <audio id="shaarawy" controls>
-            <source src="https://3vh.liveradiu.com:8000/el-shaarawy.mp3" type="audio/mpeg">
+            <source src="http://server01.quran-uni.com:8000/el-shaarawy.mp3" type="audio/mpeg">
             مشغل الصوت غير مدعوم في متصفحك.
         </audio>
     </section>
-
-
     <section data-aos="fade-up">
         <h2>دعاء للمتوفي</h2>
-        <iframe src="https://www.dailymotion.com/embed/video/x1vba3a" frameborder="0" allowfullscreen></iframe>
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+            <iframe style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden" frameborder="0" type="text/html" src="https://www.dailymotion.com/embed/video/x1vba3a" width="100%" height="100%" allowfullscreen title="Dailymotion Video Player"></iframe>
+        </div>
     </section>
     <section data-aos="fade-up">
         <div class="text-overlay">
@@ -251,7 +247,7 @@
         <a href="https://hisnmuslim.com/i/ar/1" target="_blank">
             <img src="https://raw.githubusercontent.com/sadkaa/m/main/sadaka-img/elmoslem.png" alt="حصن المسلم">
         </a>
-
+    </section>
     <section data-aos="fade-up">
         <div class="counter-container">
             <h2>مسبحة إسلامية</h2>
@@ -262,13 +258,13 @@
     </section>
     <section class="contact-info" data-aos="fade-up">
         <p>هل تريد الحصول على صدقة جارية لمن تحب مماثلة؟<br>
- <p>هبة الصدقة 100 جنية فقط<br>
+        <p>هبة الصدقة 100 جنية فقط<br>
         تواصل معنا عبر الواتساب:</p>
         <a href="https://wa.me/0201222792787?text=أرغب في الحصول على ص.قة جارية مماثلة" class="whatsapp-box" target="_blank">تواصل معنا عبر واتساب</a>
     </section>
     <div class="spacer"></div>
     <footer data-aos="fade-up">
-        <p> { وَمَا تُقَدِّمُوا لِأَنْفُسِكُمْ مِنْ خَيْر تَجِدُوهُ عِنْد اللَّه } نسألكم الدعاء لصاحب هذه الصفحة لتكون صدقة جارية له</p>
+        <p>{ وَمَا تُقَدِّمُوا لِأَنْفُسِكُمْ مِنْ خَيْر تَجِدُوهُ عِنْد اللَّه } نسألكم الدعاء لصاحب هذه الصفحة لتكون صدقة جارية له</p>
     </footer>
 
     <!-- إضافة مكتبة AOS JS -->
@@ -298,9 +294,26 @@
             count = 0;
             document.getElementById('counter').innerText = count;
         }
+
+        // الاحتفاظ بتشغيل الصوت في الخلفية
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                const playingAudio = document.querySelector('audio:playing');
+                if (playingAudio) {
+                    playingAudio.play().catch(error => console.log('Error playing audio:', error));
+                }
+            }
+        });
+
+        // كود يساعد على تشغيل الصوت في خلفية المتصفح في الأندرويد
+        document.addEventListener('play', function(e){
+            const audios = document.getElementsByTagName('audio');
+            for(let i = 0, len = audios.length; i < len;i++){
+                if(audios[i] != e.target){
+                    audios[i].pause();
+                }
+            }
+        }, true);
     </script>
 </body>
 </html>
-
-
-
