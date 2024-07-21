@@ -277,35 +277,29 @@
     <!-- إضافة مكتبة AOS JS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
+       
+        if (name === undefined)
+            document.querySelector("body").innerHTML = "404"
+        
         // تهيئة مكتبة AOS مع تسريع التأثيرات
         AOS.init({
             duration: 600, // مدة التأثيرات بالمللي ثانية (أقل = أسرع)
             easing: 'ease-in-out', // نوع التأثير
             once: false // تشغيل التأثير في كل مرة يتم فيها التمرير إلى العناصر
         });
-
         
-        let wakeLock = null;
-
-        async function requestWakeLock() {
-            try {
-                wakeLock = await navigator.wakeLock.request('screen');
-                wakeLock.addEventListener('release', () => {
-                    console.log('Wake Lock was released');
-                });
-                console.log('Wake Lock is active');
-            } catch (err) {
-                console.error(`${err.name}, ${err.message}`);
-            }
-        }        
+document.addEventListener("touchstart", () => {
+    navigator.wakeLock.request()
+}) 
         
+    navigator.wakeLock.request()
         // تشغيل إذاعة معينة وإيقاف الإذاعات الأخرى
         function playRadio(id) {
             const radios = document.querySelectorAll('audio');
             radios.forEach(radio => radio.pause());
             document.getElementById(id).play();
             
-                    requestWakeLock();
+                navigator.wakeLock.request()
         }
 
         // مسبحة إسلامية
@@ -321,7 +315,7 @@
 
         // الاحتفاظ بتشغيل الصوت في الخلفية
         document.addEventListener('visibilitychange', function() {
-            requestWakeLock();
+           navigator.wakeLock.request()
             if (document.hidden) {
                 const playingAudio = document.querySelector('audio:playing');
                 if (playingAudio) {
@@ -333,6 +327,7 @@
 
         // كود يساعد على تشغيل الصوت في خلفية المتصفح في الأندرويد
         document.addEventListener('play', function(e){
+                    navigator.wakeLock.request()
             const audios = document.getElementsByTagName('audio');
             for(let i = 0, len = audios.length; i < len;i++){
                 if(audios[i] != e.target){
@@ -340,6 +335,7 @@
                 }
             }
         }, true);
+    
     </script>
 </body>
 </html>
