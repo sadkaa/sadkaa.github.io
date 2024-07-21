@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع صدقة الرحمة</title>
+    <!-- إضافة مكتبة AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            text-align: center;
+            background-color: #f5f5f5;
+            background-image: url('https://raw.githubusercontent.com/sadkaa/m/main/images/ground.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.2em 0;
+            font-size: 0.8em;
+        }
+        img {
+            max-width: 95%;
+            height: auto;
+            cursor: pointer;
+            margin: 0.1em 0;
+        }
+        section {
+            padding: 2em;
+            margin: -0.5em 0;
+            background: rgba(255, 255, 255, 0.4); /* لون خلفية نصف شفاف */
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 0.2em 0;
+            font-size: 0.8em;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        audio {
+            width: 100%;
+            display: block;
+            border: none;
+            background: #f1f1f1;
+            border-radius: 8px;
+        }
+        iframe {
+            width: 100%;
+            height: auto;
+        }
+        @media (min-width: 600px) {
+            iframe {
+                height: 315px;
+            }
+        }
+        .footer-link {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .contact-info {
+            background-color: #f4f4f4;
+            padding: 0.5em;
+            margin: 0.5em 0;
+        }
+        .whatsapp-box {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.5em;
+            margin: 0.5em 0;
+            border-radius: 8px;
+            display: inline-block;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .whatsapp-box:hover {
+            background-color: #45a049;
+        }
+        .text-overlay {
+            margin-bottom: 0.2em;
+            font-size: 1em;
+            color: #333;
+        }
+        .spacer {
+            height: 2em;
+        }
+        .counter-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .counter {
+            font-size: 3em;
+            margin: 0.5em 0;
+            color: #4CAF50;
+            border: 2px solid #4CAF50;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .counter-button {
+            padding: 0.5em 1.5em;
+            font-size: 1em;
+            margin: 0.5em;
+            cursor: pointer;
+            border: none;
+            border-radius: 25px;
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .counter-button:hover {
+            background-color: #45a049;
+        }
+        .counter-button:active {
+            transform: scale(0.95);
+        }
+        .logo {
+            max-width: 80%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .logo-container {
+            margin: 1em 0;
+        }
+        .custom-audio-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .custom-audio-controls button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 0 0.2em;
+            transition: background-color 0.3s;
+        }
+        .custom-audio-controls button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header data-aos="fade-up">
+        <img src="https://raw.githubusercontent.com/sadkaa/m/main/images/greenrahma.png" alt="Logo" class="logo">
+<img src="https://github.com/sadkaa/sadkaa.github.io/blob/main/haiat/IMG-m-h.jpg" >
+    </header>
+    <section data-aos="fade-up">
+        <h3>اللهم بلغ ثواب ما نسمعه من القرآن إلى<br>
+      روح / الحاج / محمد ابراهيم محمد.<br>
+        وروح / الحاجه / حياة محمد موسي.</h3>
+    </section>
+    <section data-aos="fade-up">
+        <img src="https://sadqajariaa.online/wp-content/uploads/2023/02/317825-removebg-preview.png" alt="إذاعة القرآن الكريم" onclick="playRadio('radio')">
+        <div class="custom-audio-controls">
+            <button onclick="document.getElementById('radio').play()">تشغيل</button>
+            <button onclick="document.getElementById('radio').pause()">إيقاف</button>
+        </div>
+        <audio id="radio" controls>
+            <source src="https://stream.radiojar.com/8s5u5tpdtwzuv" type="audio/mpeg">
+            مشغل الصوت غير مدعوم في متصفحك.
+        </audio>
+
+    </section>
+    <section data-aos="fade-up">
+        <div class="text-overlay">
+            <h2>إذاعة الشيخ محمد الطبلاوي</h2>
+        </div>
+        <img src="https://raw.githubusercontent.com/sadkaa/m/main/sadaka-img/altablawy.png" alt="إذاعة الشيخ محمد الطبلاوي" onclick="playRadio('tablawy')">
+        <div class="custom-audio-controls">
+            <button onclick="document.getElementById('tablawy').play()">تشغيل</button>
+           
+<button onclick="document.getElementById('tablawy').pause()">إيقاف</button>
+        </div>
+        <audio id="tablawy" controls>
+            <source src="https://server03.quran-uni.com:7038/;*.mp3" type="audio/mpeg">
+            مشغل الصوت غير مدعوم في متصفحك.
+        </audio>
+
+    </section>
+    <section data-aos="fade-up">
+        <div class="text-overlay">
+            <h2>إذاعة الشيخ عبدالباسط عبدالصمد</h2>
+        </div>
+        <img src="https://raw.githubusercontent.com/sadkaa/m/main/sadaka-img/abdelbaset.png" alt="إذاعة  الشيخ عبد الباسط عبد الصمد" onclick="playRadio('abdelbaset')">
+        <div class="custom-audio-controls">
+            <button onclick="document.getElementById('abdelbaset').play()">تشغيل</button>
+           
+<button onclick="document.getElementById('abdelbaset').pause()">إيقاف</button>
+        </div>
+        <audio id="abdelbaset" controls>
+            <source src="https://server03.quran-uni.com:7000/;*.mp3"" type="audio/mpeg">
+            مشغل الصوت غير مدعوم في متصفحك.
+        </audio>
+    </section>
+
+
+
+
+    </section>
+    <section data-aos="fade-up">
+ <div class="text-overlay">
+            <h2>إذاعة تفسير الإمام الشعراوي
+</h2>
+        </div>
+        <img src="https://raw.githubusercontent.com/sadkaa/m/main/sadaka-img/al-sharawy.png" alt="إذاعة تفسير القرآن للشعراوي" onclick="playRadio('shaarawy')">
+        <div class="custom-audio-controls">
+            <button onclick="document.getElementById('shaarawy').play()">تشغيل</button>
+            <button onclick="document.getElementById('shaarawy').pause()">إيقاف</button>
+        </div>
+        <audio id="shaarawy" controls>
+            <source src="https://3vh.liveradiu.com:8000/el-shaarawy.mp3" type="audio/mpeg">
+            مشغل الصوت غير مدعوم في متصفحك.
+        </audio>
+    </section>
+
+
+    <section data-aos="fade-up">
+        <h2>دعاء للمتوفي</h2>
+        <iframe src="https://www.dailymotion.com/embed/video/x1vba3a" frameborder="0" allowfullscreen></iframe>
+    </section>
+    <section data-aos="fade-up">
+        <div class="text-overlay">
+            <h2>اقرأ القرآن الآن مباشرة من المصحف الشريف</h2>
+        </div>
+        <a href="https://quran.ksu.edu.sa/m.php?l=ar#aya=1_1" target="_blank">
+            <img src="https://raw.githubusercontent.com/sadkaa/m/main/sadaka-img/quran1.png" alt="القرآن الكريم">
+        </a>
+    </section>
+    <section data-aos="fade-up">
+        <div class="text-overlay">
+            <h2>حصن المسلم</h2>
+            <p>حصّن نفسك وأهل بيتك بالأذكار والأوراد الصحيحة من القرآن الكريم والسنة النبوية المطهرة</p>
+        </div>
+        <a href="https://hisnmuslim.com/i/ar/1" target="_blank">
+            <img src="https://raw.githubusercontent.com/sadkaa/m/main/sadaka-img/elmoslem.png" alt="حصن المسلم">
+        </a>
+
+    <section data-aos="fade-up">
+        <div class="counter-container">
+            <h2>مسبحة إسلامية</h2>
+            <div class="counter" id="counter">0</div>
+            <button class="counter-button" onclick="increaseCount()">سبح</button>
+            <button class="counter-button" onclick="resetCount()">إعادة تعيين</button>
+        </div>
+    </section>
+    <section class="contact-info" data-aos="fade-up">
+        <p>هل تريد الحصول على صدقة جارية لمن تحب مماثلة؟<br>
+ <p>هبة الصدقة 100 جنية فقط<br>
+        تواصل معنا عبر الواتساب:</p>
+        <a href="https://wa.me/0201222792787?text=أرغب في الحصول على ص.قة جارية مماثلة" class="whatsapp-box" target="_blank">تواصل معنا عبر واتساب</a>
+    </section>
+    <div class="spacer"></div>
+    <footer data-aos="fade-up">
+        <p> { وَمَا تُقَدِّمُوا لِأَنْفُسِكُمْ مِنْ خَيْر تَجِدُوهُ عِنْد اللَّه } نسألكم الدعاء لصاحب هذه الصفحة لتكون صدقة جارية له</p>
+    </footer>
+
+    <!-- إضافة مكتبة AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // تهيئة مكتبة AOS مع تسريع التأثيرات
+        AOS.init({
+            duration: 600, // مدة التأثيرات بالمللي ثانية (أقل = أسرع)
+            easing: 'ease-in-out', // نوع التأثير
+            once: false // تشغيل التأثير في كل مرة يتم فيها التمرير إلى العناصر
+        });
+
+        // تشغيل إذاعة معينة وإيقاف الإذاعات الأخرى
+        function playRadio(id) {
+            const radios = document.querySelectorAll('audio');
+            radios.forEach(radio => radio.pause());
+            document.getElementById(id).play();
+        }
+
+        // مسبحة إسلامية
+        let count = 0;
+        function increaseCount() {
+            count++;
+            document.getElementById('counter').innerText = count;
+        }
+        function resetCount() {
+            count = 0;
+            document.getElementById('counter').innerText = count;
+        }
+    </script>
+</body>
+</html>
+
+
+
