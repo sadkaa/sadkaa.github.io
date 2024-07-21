@@ -10,6 +10,6 @@ const data = {
 
 let path = new URLSearchParams(window.location.search).toString()
 if (path.endsWith("="))
-    path = params.substring(0, path.toString().length - 1)
+    path = path.substring(0, path.toString().length - 1)
 
 let name = data[path].name
