@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صدقة جارية عن /حسن ابراهيم  </title>
+    <script src="/data.js"></script>
+    <title></title>
+    <script>
+        document.title = "صدقة جارية عن " + name
+    </script>
     <!-- إضافة مكتبة AOS CSS -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <style>
@@ -166,11 +170,16 @@
 <body>
     <header data-aos="fade-up">
         <img src="https://raw.githubusercontent.com/sadkaa/m/main/images/greenrahma.png" alt="Logo" class="logo">
-        <img src="/hasan/hassan.png" >
+        <img id ="the-img" src="/hasan/hassan.png" >
+         <script>
+        document.getElementById("the-img").src = "/images/" + path
+    </script>
     </header>
     <section data-aos="fade-up">
-        <h3>اللهم بلغ ثواب ما نسمعه من القرآن إلى<br>
-        روح / الحاج / حسن ابراهيم محمد <br>
+        <h3 id="the-name"></h3>
+    <script>
+        document.getElementById("the-name").innerHTML = "اللهم بلغ ثواب ما نسمعه من القرأن إلي روح " + name
+    </script>
        </section>
     <section data-aos="fade-up">
         <div class="text-overlay">
@@ -277,6 +286,9 @@
     <!-- إضافة مكتبة AOS JS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
+        if (name === undefined)
+            document.querySelector("body").innerHTML = "404"
+        
         // تهيئة مكتبة AOS مع تسريع التأثيرات
         AOS.init({
             duration: 600, // مدة التأثيرات بالمللي ثانية (أقل = أسرع)
