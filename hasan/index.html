@@ -284,11 +284,28 @@
             once: false // تشغيل التأثير في كل مرة يتم فيها التمرير إلى العناصر
         });
 
+        
+        let wakeLock = null;
+
+        async function requestWakeLock() {
+            try {
+                wakeLock = await navigator.wakeLock.request('screen');
+                wakeLock.addEventListener('release', () => {
+                    console.log('Wake Lock was released');
+                });
+                console.log('Wake Lock is active');
+            } catch (err) {
+                console.error(`${err.name}, ${err.message}`);
+            }
+        }        
+        
         // تشغيل إذاعة معينة وإيقاف الإذاعات الأخرى
         function playRadio(id) {
             const radios = document.querySelectorAll('audio');
             radios.forEach(radio => radio.pause());
             document.getElementById(id).play();
+            
+                    requestWakeLock();
         }
 
         // مسبحة إسلامية
@@ -304,9 +321,11 @@
 
         // الاحتفاظ بتشغيل الصوت في الخلفية
         document.addEventListener('visibilitychange', function() {
+            requestWakeLock();
             if (document.hidden) {
                 const playingAudio = document.querySelector('audio:playing');
                 if (playingAudio) {
+                    
                     playingAudio.play().catch(error => console.log('Error playing audio:', error));
                 }
             }
